@@ -5,65 +5,58 @@
 :root {
     --color1: #D89584;
     --color2: #F4F4F4;
+    --color3: #3498db;
+    --text-color: #444;
+    --title-color: #222;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
 body {
-    margin: 0px;
-    font-family: Arial;
+    margin: 0;
+    font-family: Arial, sans-serif;
     line-height: 1.5;
 }
 
-div.cover {
-    background: url(cover_overlay.png) no-repeat center/100% 100%,url(cover.jpg) no-repeat center/cover;
-    height: 360px;
-    position: relative;
+/* ---------------------- GENERAL --------------------------- */
+.section {
+    padding: 30px 40px;
+    overflow: auto;
 }
 
-img.cover-profile {
-    height: 100px;
+.section-grise1 {
+    background: url(triangle2white.svg) no-repeat center bottom/100%;
+    background-color: var(--color2);
+    padding-bottom: 70px;
+}
+
+.section-grise2 {
+    background: url(triangle1white.svg) no-repeat center top/100%;
+    background-color: var(--color2);
+    padding-top: 80px;
+}
+
+.separateur {
+    background-color: #979797;
+    height: 1px;
+    width: 150px;
     position: relative;
     left: 50%;
-    margin-left: -50px;
-    margin-top: 50px;
-
+    margin-left: -75px;
 }
 
-h1 {
-    color: white;
-    text-align: center;
-    font-size: 42px;
-    margin-top: 10px;
-    margin-bottom: 0px;
+.float-right {
+    float: right;
 }
 
-div.cover p {
-    color: lightgray;
-    text-align: center;
-    margin-top: 8px;
-    font-size: 14px;
+.col-contenu {
+    width: 75%;
+    padding-left: 16px;
 }
 
-div.cover-contact {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    border-left: 4px solid var(--color1);
-    padding-left: 8px
-    
-}
-
-div.cover-contact a {
-    color: white;
-    font-size: 14px;
-}
-
-div.cover-contact p {
-    text-align: left;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-div.cover-contact p:first-child {
-    margin-bottom: 14px;
+img.col-contenu {
+    width: 25%;
+    padding-left: 0;
 }
 
 a.contact-button {
@@ -71,16 +64,10 @@ a.contact-button {
     border: 2px solid var(--color1);
     padding: 8px 15px;
     text-decoration: none;
-    background-color: #00000040;
+    background-color: rgba(0, 0, 0, 0.25);
     display: inline-block;
     margin-top: 11px;
     font-size: 14px;
-}
-
-.contact-button-portfolio {
-    position: absolute; 
-    right: 20px; 
-    top:5px;
 }
 
 a.contact-button:hover {
@@ -88,39 +75,109 @@ a.contact-button:hover {
     border: 2px solid white;
 }
 
-.section {
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    overflow: auto;
+.contact-button-portfolio {
+    position: absolute;
+    right: 20px;
+    top: 5px;
 }
 
-div.section-grise1 {
-    background: url(triangle2white.svg) no-repeat center bottom/100%;
-    background-color: var(--color2);
-    padding-bottom: 70px;
+/* ---------------------- COVER --------------------------- */
+.cover {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(cover.jpg) no-repeat center/cover;
+    height: 360px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-div.section-grise2 {
-    background: url(triangle1white.svg) no-repeat center top/100%;
-    background-color: var(--color2);
-    padding-top: 80px;
+.cover-profile {
+    height: 110px;
+    width: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.cover-profile:hover {
+    transform: scale(1.05);
+}
+
+.cover-contact {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    border-left: 4px solid var(--color1);
+    padding-left: 12px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0 4px 4px 0;
+    padding: 10px 15px 10px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.cover-contact:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cover-contact a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.cover-contact a:hover {
+    color: var(--color1);
+}
+
+.cover-contact p {
+    text-align: left;
+    margin: 0;
+}
+
+.cover-contact p:first-child {
+    margin-bottom: 14px;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 768px) {
+    .cover-profile {
+        height: 90px;
+        width: 90px;
+    }
+
+    .cover-contact {
+        padding: 8px 12px 8px 10px;
+    }
+}
+
+/* ---------------------- TYPOGRAPHY --------------------------- */
+h1, h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+h1 {
+    color: white;
+    font-size: 42px;
+    margin-bottom: 0;
 }
 
 h2 {
-    text-align: center;
     font-size: 34px;
-    margin-top: 0px;
 }
 
-div.separateur {
-    background-color: #979797;
-    height: 1px;
-    width: 150px;
-    position: relative;
-    left: 50%;
-    margin-left: -75px;
+div.cover p {
+    color: lightgray;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
 }
 
 div.section-grise1 p {
@@ -132,47 +189,51 @@ div.section-grise1 p {
     margin-right: auto;
 }
 
-img.col-contenu {
-    width: 40%;
-}
-
-div.col-contenu {
-    width: 60%;
-    padding-left: 16px;
-}
-
-.float-right {
-    float: right;
-}
-
-div.texte-avec-ligne-verticale {
+/* ---------------------- VERTICAL LINE TEXT --------------------------- */
+.texte-avec-ligne-verticale {
     border-left: 4px solid var(--color1);
     padding-left: 8px;
-    height: 50px;
     display: inline-block;
 }
 
-div.texte-avec-ligne-verticale p {
-    padding-top: 0px;
-    margin-top: 0px;
-
+.portfolio-header .texte-avec-ligne-verticale {
+    height: 45px;
+    margin-left: 16px;
+    margin-top: 22px;
 }
 
-div.barre-verticle {
-    height: 50px;
-    width: 4px;
-    background-color: var(--color1);
-    margin-right: 8px;
-
+/* Redéfinition pour les pages de détail de projet */
+.section .texte-avec-ligne-verticale {
+    border-left: 4px solid var(--color3);
+    padding-left: 2rem;
+    margin-bottom: 2rem;
 }
 
-.col-portfolio {
-    width: 47%;
+.texte-avec-ligne-verticale p {
+    margin-top: 0;
+    line-height: 1.6;
+    color: var(--text-color);
 }
 
+.texte-avec-ligne-verticale h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--title-color);
+    font-weight: 600;
+}
 
+.texte-avec-ligne-verticale ul {
+    padding-left: 1.25rem;
+    margin-bottom: 1.5rem;
+}
 
-/* PORTFOLIO */
+.texte-avec-ligne-verticale li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* ---------------------- PORTFOLIO --------------------------- */
 .portfolio-header {
     height: 90px;
     background: url(header.jpg) no-repeat center/cover;
@@ -185,7 +246,7 @@ div.barre-verticle {
     color: white;
     padding-top: 4px;
     padding-left: 8px;
-    margin-top: 20;
+    margin-top: 20px;
 }
 
 h1.portfolio {
@@ -208,50 +269,144 @@ a.portfolio-back {
 }
 
 img.portfolio {
-    width: 70%;
+    width: 100%;
     max-width: 475px;
 }
 
-/* Responsive design : Mobil */
+.col-portfolio {
+    width: 47%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.col-portfolio:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-medium);
+}
+
+.col-portfolio img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.col-portfolio a {
+    margin-top: 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+}
+
+.col-portfolio a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------- TECH STACK --------------------------- */
+.tech-stack {
+    margin-top: 1.5rem;
+}
+
+.tech-stack h4 {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    background-color: #f0f5ff;
+    color: #3172c9;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ---------------------- PROJECT GALLERY --------------------------- */
+.project-gallery {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.project-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    box-shadow: var(--shadow-light);
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-image:hover img {
+    transform: scale(1.03);
+}
+
+.project-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--color3);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.project-link:hover {
+    background-color: #f0f9ff;
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ---------------------- RESPONSIVE --------------------------- */
 @media only screen and (max-width: 768px) {
-    img.cover-profile {
-        height: 90px;
-        margin-top: 75px;
-    
-    }
-    
-    h1 {
-        font-size: 38px;
-        margin-top: 6px;
-        margin-bottom: 0px;
-    }
-    
-    div.cover p {
-        margin-top: 2px;
-        font-size: 13px;
-    }
-
+    /* Général */
     .section {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 30px 20px;
     }
-    
-    div.section-grise1 {
+
+    .section-grise1 {
         padding-bottom: 40px;
-    
     }
 
-    h2 {
-        font-size: 30px;
-    }
-
+    /* Layout */
+    .col-contenu,
     img.col-contenu {
         width: 100%;
     }
-    
+
     div.col-contenu {
-        width: 100%;
-        padding-left: 0px;
+        padding-left: 0;
         margin-top: 20px;
     }
 
@@ -260,13 +415,41 @@ img.portfolio {
         padding-bottom: 20px;
     }
 
-    /* PORTFOLIO MOBILE */
+    /* Cover */
+    img.cover-profile {
+        height: 90px;
+        margin-top: 75px;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 38px;
+        margin-top: 6px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    div.cover p {
+        margin-top: 2px;
+        font-size: 13px;
+    }
+
+    /* Portfolio */
     p.portfolio-header-title {
         font-size: 20px;
         padding-top: 8px;
         padding-left: 8px;
         margin-top: 10px;
+    }
 
+    h1.portfolio {
+        font-size: 40px;
+    }
+
+    h2.portfolio {
+        font-size: 22px;
     }
 
     a.contact-button {
@@ -274,20 +457,26 @@ img.portfolio {
         margin-top: 12px;
         font-size: 12px;
     }
-    
+
     .contact-button-portfolio {
-        right: 12px; 
+        right: 12px;
     }
 
-    h1.portfolio {
-        font-size: 40px;
+    /* Project Gallery */
+    .project-gallery {
+        flex-direction: column;
     }
-    
-    h2.portfolio {
-        font-size: 22px;
+}
+
+@media (min-width: 768px) {
+    .project-gallery {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
     }
 
-    img.portfolio {
-        width: 100%;
+    .project-image {
+        flex: 0 0 60%;
     }
 }
